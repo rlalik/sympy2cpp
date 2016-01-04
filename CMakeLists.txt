@@ -36,6 +36,9 @@ find_package(PythonLibs)
 include_directories(PYTHON_INCLUDE_DIRS)
 
 
+add_executable(example example.cpp sympy2cpp.cpp sympy2cpp.h)
+target_link_libraries(example ${PYTHON_LIBRARIES})
+
 add_library(sympy2cpp SHARED sympy2cpp.cpp sympy2cpp.h)
 # set_property(TARGET sympy2cpp PROPERTY C_STANDARD 99)
 

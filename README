@@ -22,16 +22,26 @@ B. Installation
 4. To test library, stay in the build directory and execute
 		./bin/UnitTester
 
-5. To use the library, check the tests.
-
-6. Customize Python Version
+5. Customize Python Version
 
    By default, python 3.4 is used. To change version, e.g.:
 
 	cmake .. -DPython_ADDITIONAL_VERSIONS=2.7
 
 
-C. Exported functions
+C. Usage
+===========================================================
+
+To use the library, check the tests and examples.
+You can either link against libsympy2cpp library, or copy source
+files into your directory and compile together with your code.
+
+See
+https://docs.python.org/3.4/extending/embedding.html#compiling-and-linking-under-unix-like-systems
+for information how to compile and link agains python headers and libs.
+
+
+D. Exported functions
 ===========================================================
 
 a. meijerg
