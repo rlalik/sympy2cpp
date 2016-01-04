@@ -1,0 +1,41 @@
+A. Description
+===========================================================
+
+This library exports some functions from sympy to be available in C++
+
+
+B. Installation
+===========================================================
+
+1. Easy way to install library:
+
+	git clone https://github.com/dziadu/sympy2cpp
+	mkdir sympy2cpp/build
+	cd sympy2cpp/build
+	cmake ..
+	sudo make install
+
+3. To install in custom location, replace two last steps with:
+	cmake .. -DCMAKE_INSTALL_PREFIX=my_custom_location
+	make install
+
+4. To test library, stay in the build directory and execute
+		./bin/UnitTester
+
+5. To use the library, check the tests.
+
+6. Customize Python Version
+
+   By default, python 3.4 is used. To change version, e.g.:
+
+	cmake .. -DPython_ADDITIONAL_VERSIONS=2.7
+
+
+C. Exported functions
+===========================================================
+
+a. meijerg
+
+   see
+   http://docs.sympy.org/0.6.7/modules/mpmath/functions/hypergeometric.html?highlight=meijer#mpmath.meijerg
+   for details
