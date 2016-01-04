@@ -33,8 +33,10 @@ C. Usage
 ===========================================================
 
 To use the library, check the tests and examples.
-You can either link against libsympy2cpp library, or copy source
-files into your directory and compile together with your code.
+
+You can either link against libsympy2cpp library, or copy
+source files sympy2cpp.{h,cpp} into your project directory
+and compile together with your code.
 
 See
 https://docs.python.org/3.4/extending/embedding.html#compiling-and-linking-under-unix-like-systems
