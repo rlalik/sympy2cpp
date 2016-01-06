@@ -20,7 +20,9 @@
 #include "sympy2cpp.h"
 #include <cstdio>
 
-#define FOR_MASSIF 1
+// disable by default
+// #define FOR_MASSIF 1
+
 int main(int argc, char ** argv)
 {
 	// initialize module
