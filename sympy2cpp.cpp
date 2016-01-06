@@ -32,6 +32,7 @@ pFunc_meijerg(0)
 	// load sympy
 	pName = PyUnicode_FromString("sympy.mpmath");
 	pModule = PyImport_Import(pName);
+	Py_DECREF(pName);
 
 	if (!pModule)
 	{
@@ -42,10 +43,11 @@ pFunc_meijerg(0)
 
 	// get interafce for meijerg
 	pFunc_meijerg = PyObject_GetAttrString(pModule, "meijerg");
+	Py_DECREF(pModule);
 
 	if (!(pFunc_meijerg && PyCallable_Check(pFunc_meijerg)))
 	{
-		Py_DECREF(pFunc_meijerg);
+		Py_XDECREF(pFunc_meijerg);
 		PyErr_Print();
 		std::abort();
 	}
@@ -53,11 +55,8 @@ pFunc_meijerg(0)
 
 Sympy2cpp::~Sympy2cpp()
 {
-	Py_DECREF(pFunc_meijerg);
-	Py_DECREF(pName);
-	Py_DECREF(pModule);
-
-// 	Py_Finalize();
+	Py_XDECREF(pFunc_meijerg);
+	Py_Finalize();
 }
 
 void Sympy2cpp::fill_tuple(PyObject * pO, const size_t size, double * array)
@@ -108,19 +107,19 @@ double Sympy2cpp::meijerg(int m, int n, int p, int q, double *a_m, double *a_n, 
 
 	// call function
 	pValue = PyObject_CallObject(pFunc_meijerg, pArgs);
+	Py_DECREF(pArgs);
 
 	double res = 0.0;
 
 	if (pValue != 0)
 	{
 		res = PyFloat_AsDouble(pValue);
+		Py_DECREF(pValue);
 	}
 	else
 	{
-		Py_DECREF(pValue);
 		throw std::bad_exception();
 	}
 
-	Py_DECREF(pValue);
 	return res;
 }
