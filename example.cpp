@@ -20,7 +20,7 @@
 #include "sympy2cpp.h"
 #include <cstdio>
 
-// disable by default
+// disabled by default
 // #define FOR_MASSIF 1
 
 int main(int argc, char ** argv)

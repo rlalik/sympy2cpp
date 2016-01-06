@@ -69,6 +69,38 @@ void Sympy2cpp::fill_tuple(PyObject * pO, const size_t size, double * array)
 	}
 }
 
+/* For details please refer to
+ * http://docs.sympy.org/0.6.7/modules/mpmath/functions/hypergeometric.html?highlight=meijer#mpmath.meijerg
+ *
+ * meijerg function in python takes two tuples of tuples
+ * as arguments:
+ *   a_s = [ [], [] ]
+ *   b_s = [ [], [] ],
+ * Python can find lengths of all the tuples easily, but in C/C++
+ * it is not always possible.
+ *
+ * In this code, we use following arrays as repalcement for tuples
+ *  { a_m, a_n }
+ *  { b_p, b_q }
+ * where a_m and a_n are subtuples of a_s,
+ * and b_p and b_q of b_s accordingly.
+ *
+ * We should give explicitely lengths to the function
+ *  m is length of the first tuple in a_s -> here it is a_m
+ *  n is length of the second tuple in a_s -> here it is a_n
+ *  p is length of the first tuple in b_s -> here it is b_p
+ *  q is length of the second tuple in b_s -> here it is b_q
+ *
+ * Be aware that m, n, p, q in C++ code are not the same like
+ * in Python code, they are redefined in following way
+ * (capital letters denote Python variables)
+ *  m := M
+ *  n := P-M
+ *  p := N
+ *  q := Q-N
+ *
+ * z and r are the same like in python example.
+ */
 double Sympy2cpp::meijerg(int m, int n, int p, int q, double *a_m, double *a_n, double *b_p, double *b_q, double z, double r)
 {
 	// input tuples
