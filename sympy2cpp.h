@@ -20,7 +20,7 @@
 #ifndef SYMPY2CPP_H
 #define SYMPY2CPP_H
 
-#include <python3.4/Python.h>
+#include <Python.h>
 
 #define PR(x) std::cout << "++DEBUG: " << #x << " = |" << x << "| (" << __FILE__ << ", " << __LINE__ << ")\n";
 

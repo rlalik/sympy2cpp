@@ -33,8 +33,7 @@ if (NOT Python_ADDITIONAL_VERSIONS)
 	set(Python_ADDITIONAL_VERSIONS 3.4)
 endif()
 find_package(PythonLibs)
-include_directories(PYTHON_INCLUDE_DIRS)
-
+include_directories(${PYTHON_INCLUDE_DIRS})
 
 add_executable(example example.cpp sympy2cpp.cpp sympy2cpp.h)
 target_link_libraries(example ${PYTHON_LIBRARIES})
